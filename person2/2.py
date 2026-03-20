@@ -1,31 +1,17 @@
 import networkx as nx
 import matplotlib.pyplot as plt
-import math
 import os
-import sys
-sys.stdout.reconfigure(encoding='utf-8')
-# ---------------- LOAD GRAPH ----------------
+
+# ---------------- LOAD CLEAN GRAPH ----------------
 base_dir = os.path.dirname(__file__)
-file_path = os.path.join(base_dir, "mit_campus.graphml")
-
+file_path = os.path.join(base_dir, "../person1/mit_clean.graphml")
 G = nx.read_graphml(file_path)
+G = G.to_undirected()
 
-# ---------------- PREPROCESS ----------------
-for n in G.nodes:
-    G.nodes[n]['x'] = float(G.nodes[n]['x'])
-    G.nodes[n]['y'] = float(G.nodes[n]['y'])
+print(f"Nodes: {len(G.nodes)}")
+print(f"Edges: {len(G.edges)}")
 
-for u, v, d in G.edges(data=True):
-    try:
-        d['length'] = float(d.get('length', 1.0))
-    except:
-        d['length'] = 1.0
-
-# Connected graph
-largest_cc = max(nx.connected_components(G.to_undirected()), key=len)
-G = G.subgraph(largest_cc).copy()
-
-# Labels
+# ---------------- CREATE LABEL MAP ----------------
 def generate_label(index):
     label = ""
     while True:
@@ -35,10 +21,32 @@ def generate_label(index):
             break
     return label
 
-for i, node in enumerate(G.nodes):
-    G.nodes[node]['label'] = generate_label(i)
+label_to_node = {}
+node_to_label = {}
 
-pos = {n: (G.nodes[n]['x'], G.nodes[n]['y']) for n in G.nodes}
+for i, node in enumerate(G.nodes):
+    label = generate_label(i)
+    label_to_node[label] = node
+    node_to_label[node] = label
+
+# ---------------- TAKE INPUT ----------------
+print("\nEnter node labels (like A, B, AA, etc.)")
+
+start_label = input("Enter START node: ").strip().upper()
+goal_label = input("Enter GOAL node: ").strip().upper()
+
+if start_label not in label_to_node or goal_label not in label_to_node:
+    print("Invalid label entered!")
+    exit()
+
+start = label_to_node[start_label]
+goal = label_to_node[goal_label]
+
+print(f"\nStart: {start_label}")
+print(f"Goal: {goal_label}")
+
+# ---------------- POSITIONS ----------------
+pos = {n: (float(G.nodes[n]['x']), float(G.nodes[n]['y'])) for n in G.nodes}
 
 # ---------------- BFS ----------------
 def run_bfs(G, start, goal):
@@ -60,114 +68,75 @@ def run_dfs(G, start, goal):
 
         if node not in visited:
             visited.add(node)
-
             for neighbor in G.neighbors(node):
                 if neighbor not in visited:
                     stack.append((neighbor, path + [neighbor]))
 
     return []
 
-# ---------------- INTERACTION ----------------
-state = {
-    'start': None,
-    'goal': None,
-    'bfs': [],
-    'dfs': []
-}
+# ---------------- PATH COST ----------------
+def path_cost(G, path):
+    cost = 0
+    for i in range(len(path) - 1):
+        u, v = path[i], path[i+1]
 
-def find_nearest(x, y):
-    best = None
-    dist = float('inf')
-    for n in G.nodes:
-        nx_, ny_ = pos[n]
-        d = math.sqrt((nx_ - x)**2 + (ny_ - y)**2)
-        if d < dist:
-            dist = d
-            best = n
-    return best
+        if isinstance(G[u][v], dict):
+            edge_data = list(G[u][v].values())[0]
+            cost += float(edge_data.get('length', 1.0))
+        else:
+            cost += float(G[u][v].get('length', 1.0))
 
-def redraw():
-    ax.clear()
+    return cost
 
-    nx.draw(G, pos, node_size=10, edge_color='gray', alpha=0.5)
+# ---------------- RUN ----------------
+bfs_path = run_bfs(G, start, goal)
+dfs_path = run_dfs(G, start, goal)
 
-    # BFS path
-    if state['bfs']:
-        nx.draw_networkx_edges(
-            G, pos,
-            edgelist=list(zip(state['bfs'], state['bfs'][1:])),
-            edge_color='yellow',
-            width=3
-        )
+# ---------------- RESULTS ----------------
+print("\n--- RESULTS ---")
+print("BFS Nodes:", len(bfs_path), "| Cost:", round(path_cost(G, bfs_path), 2))
+print("DFS Nodes:", len(dfs_path), "| Cost:", round(path_cost(G, dfs_path), 2))
 
-    # DFS path
-    if state['dfs']:
-        nx.draw_networkx_edges(
-            G, pos,
-            edgelist=list(zip(state['dfs'], state['dfs'][1:])),
-            edge_color='blue',
-            width=3
-        )
+# ---------------- VISUALIZATION ----------------
+plt.figure(figsize=(10, 10))
 
-    # Start / Goal
-    if state['start']:
-        nx.draw_networkx_nodes(G, pos, nodelist=[state['start']], node_color='green', node_size=100)
+# Base graph
+nx.draw(G, pos, node_size=5, edge_color='lightgray', alpha=0.6)
 
-    if state['goal']:
-        nx.draw_networkx_nodes(G, pos, nodelist=[state['goal']], node_color='red', node_size=100)
+# BFS
+if bfs_path:
+    nx.draw_networkx_edges(
+        G, pos,
+        edgelist=list(zip(bfs_path, bfs_path[1:])),
+        edge_color='yellow',
+        width=2,
+        label="BFS"
+    )
 
-    # Stats
-    if state['bfs'] and state['dfs']:
-        bfs_len = len(state['bfs'])
-        dfs_len = len(state['dfs'])
+# DFS
+if dfs_path:
+    nx.draw_networkx_edges(
+        G, pos,
+        edgelist=list(zip(dfs_path, dfs_path[1:])),
+        edge_color='blue',
+        width=2,
+        label="DFS"
+    )
 
-        ax.set_title(
-            f"BFS: {bfs_len} nodes | DFS: {dfs_len} nodes",
-            fontsize=12
-        )
+# Start & Goal
+nx.draw_networkx_nodes(G, pos, nodelist=[start], node_color='green', node_size=80)
+nx.draw_networkx_nodes(G, pos, nodelist=[goal], node_color='red', node_size=80)
 
-    plt.draw()
+# Labels only for start & goal
+nx.draw_networkx_labels(G, pos, {
+    start: start_label,
+    goal: goal_label
+}, font_size=10)
 
-def on_click(event):
-    if event.inaxes != ax:
-        return
+plt.title(
+    f"BFS: {len(bfs_path)} nodes (Cost {round(path_cost(G, bfs_path),2)}) | "
+    f"DFS: {len(dfs_path)} nodes (Cost {round(path_cost(G, dfs_path),2)})"
+)
 
-    node = find_nearest(event.xdata, event.ydata)
-
-    if state['start'] is None:
-        state['start'] = node
-        print("Start:", G.nodes[node]['label'])
-
-    elif state['goal'] is None:
-        if node == state['start']:
-            return
-
-        state['goal'] = node
-        print("Goal:", G.nodes[node]['label'])
-
-        # RUN BFS & DFS
-        state['bfs'] = run_bfs(G, state['start'], state['goal'])
-        state['dfs'] = run_dfs(G, state['start'], state['goal'])
-
-        print("\nBFS length:", len(state['bfs']))
-        print("DFS length:", len(state['dfs']))
-
-    else:
-        # reset
-        state['start'] = node
-        state['goal'] = None
-        state['bfs'] = []
-        state['dfs'] = []
-
-    redraw()
-
-# ---------------- PLOT ----------------
-fig, ax = plt.subplots(figsize=(10, 10))
-fig.canvas.mpl_connect('button_press_event', on_click)
-
-print("\nClick once → Start")
-print("Click again → Goal")
-print("Click again → Reset")
-
-redraw()
+plt.legend()
 plt.show()
