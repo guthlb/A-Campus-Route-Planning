@@ -13,5 +13,4 @@ start = label_to_node["A"]
 goal = label_to_node["M"]
 
 path = compute_astar_path(G, start, goal)
-
-visualize_path(G, pos, path, start, goal)
+len = compute_path_length(G, path)

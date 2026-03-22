@@ -1,7 +1,7 @@
 import networkx as nx
-import matplotlib.pyplot as plt
 import math
 import os
+
 
 # =========================
 # LOAD GRAPH
@@ -72,35 +72,6 @@ def save_graph(G, filename="mit_clean.graphml"):
 
 
 # =========================
-# VISUALIZE GRAPH
-# =========================
-def visualize_graph(G, pos, filename="clean_graph.png"):
-    plt.figure(figsize=(10, 10))
-
-    nx.draw(
-        G,
-        pos,
-        node_size=20,
-        edge_color='gray',
-        width=0.5,
-        alpha=0.7
-    )
-
-    labels = {n: G.nodes[n]['label'] for n in G.nodes}
-
-    nx.draw_networkx_labels(
-        G,
-        pos,
-        labels,
-        font_size=4
-    )
-
-    plt.title("Campus Graph Representation")
-    plt.savefig(filename, dpi=300, bbox_inches='tight')
-    plt.close()
-
-
-# =========================
 # LABEL ↔ NODE MAPPING
 # =========================
 def create_label_mappings(G):
@@ -128,57 +99,28 @@ def heuristic(G, n1, n2):
 # A* PATH
 # =========================
 def compute_astar_path(G, start, goal):
-    return nx.astar_path(G, start, goal,
-                         heuristic=lambda a, b: heuristic(G, a, b),
-                         weight='length')
+    return nx.astar_path(
+        G,
+        start,
+        goal,
+        heuristic=lambda a, b: heuristic(G, a, b),
+        weight='length'
+    )
 
 
 # =========================
-# VISUALIZE PATH
+# PATH LENGTH
 # =========================
-def visualize_path(G, pos, path, start, goal, filename="astar_visualization.png"):
-    path_edges = list(zip(path, path[1:]))
+def compute_path_length(G, path):
+    total_length = 0.0
 
-    plt.figure(figsize=(10, 10))
+    for u, v in zip(path, path[1:]):
+        edge_data = G.get_edge_data(u, v)
+        
+        # Handle multigraph (sometimes multiple edges)
+        if isinstance(edge_data, dict):
+            edge_data = list(edge_data.values())[0]
 
-    nx.draw(
-        G,
-        pos,
-        node_size=5,
-        edge_color='lightgray',
-        width=0.5,
-        alpha=0.6
-    )
+        total_length += float(edge_data.get('length', 1.0))
 
-    nx.draw_networkx_edges(
-        G,
-        pos,
-        edgelist=path_edges,
-        edge_color='red',
-        width=2
-    )
-
-    nx.draw_networkx_nodes(
-        G, pos,
-        nodelist=[start],
-        node_color='green',
-        node_size=80
-    )
-
-    nx.draw_networkx_nodes(
-        G, pos,
-        nodelist=[goal],
-        node_color='blue',
-        node_size=80
-    )
-
-    nx.draw_networkx_labels(
-        G,
-        pos,
-        {start: "Start", goal: "Goal"},
-        font_size=8
-    )
-
-    plt.title("Campus Route Planning using A* Algorithm")
-    plt.savefig(filename, dpi=300, bbox_inches='tight')
-    plt.close()
+    return total_length
