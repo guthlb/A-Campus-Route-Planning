@@ -4,8 +4,19 @@ import random
 import time
 import pandas as pd
 import os
-from person2.bfs-dfs import run_bfs, run_dfs
-from person1.astar import load_graph, preprocess_graph, get_connected_graph
+import sys
+
+# Allow imports from project root
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+
+from person2.bfs_dfs import run_bfs, run_dfs
+from person1.astar import (
+    load_graph,
+    preprocess_graph,
+    get_connected_graph,
+    compute_astar_path,
+    compute_path_length
+)
 
 # ---------------- LOAD + PREPROCESS GRAPH ----------------
 G = load_graph()
