@@ -185,7 +185,7 @@ def visualize_comparison(G, pos,start,goal,astar_path,bfs_path,dfs_path):
 
 if __name__ == "__main__":
 
-    G = nx.read_graphml("person1/mit_clean.graphml")
+    G = nx.read_graphml("../data/mit_clean.graphml")
 
     pos = {
         n: (float(G.nodes[n]['x']),
