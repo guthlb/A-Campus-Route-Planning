@@ -117,10 +117,12 @@ def compute_path_length(G, path):
     for u, v in zip(path, path[1:]):
         edge_data = G.get_edge_data(u, v)
         
-        # Handle multigraph (sometimes multiple edges)
+        # case 1 → normal Graph → {'length': value}
         if isinstance(edge_data, dict):
-            edge_data = list(edge_data.values())[0]
+            total_length += float(edge_data.get("length", 1.0))
 
-        total_length += float(edge_data.get('length', 1.0))
+        # case 2 → just float weight
+        else:
+            total_length += float(edge_data)
 
     return total_length

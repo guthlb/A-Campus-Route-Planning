@@ -99,6 +99,8 @@ def interactive_route_selection(G, pos):
     while not state["done"]:
         plt.pause(0.1)
 
+    plt.savefig("interactive_route_selection.png", dpi=300,bbox_inches="tight")
+
     plt.close(fig)
     return state["start"], state["goal"]
 
@@ -152,6 +154,7 @@ def animate_path(G, pos, path):
         )
 
         plt.pause(0.3)
+        plt.savefig("animate_path.png", dpi=300,bbox_inches="tight")
 
     plt.show()
 
@@ -243,4 +246,5 @@ if __name__ == "__main__":
     animate_path(G, pos, astar_path)    
 
     #------------------------------------WINDOW 3: FULL GRAPH + PATH COMPARISON------------------------------------
+    
     visualize_comparison(G, pos, start, goal, astar_path, bfs_path, dfs_path)

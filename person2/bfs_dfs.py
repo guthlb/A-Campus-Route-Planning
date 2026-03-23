@@ -1,3 +1,16 @@
+# ---------------- WEIGHTED PATH COST ----------------
+def compute_weighted_cost(G, path):
+    total = 0.0
+
+    for u, v in zip(path, path[1:]):
+        edge_data = G.get_edge_data(u, v)
+
+        if isinstance(edge_data, dict):
+            total += float(edge_data.get("length", 1.0))
+        else:
+            total += float(edge_data)
+
+    return total
 # ---------------- BFS ----------------
 def run_bfs(G, start, goal):
     from collections import deque
@@ -17,7 +30,7 @@ def run_bfs(G, start, goal):
             end_time = time.perf_counter()
             return {
                 "path": path,
-                "cost": len(path) - 1,  # BFS = unweighted edges
+                "cost": compute_weighted_cost(G, path),
                 "nodes_traversed": nodes_traversed,
                 "time": round((end_time - start_time) * 1000, 4)  # ms
             }
@@ -35,7 +48,7 @@ def run_bfs(G, start, goal):
 # ---------------- DFS ----------------
 def run_dfs(G, start, goal):
     import time
-
+    #MAX_DEPTH = 40  
     start_time = time.perf_counter()
 
     visited = set()
@@ -50,7 +63,7 @@ def run_dfs(G, start, goal):
             end_time = time.perf_counter()
             return {
                 "path": path,
-                "cost": len(path) - 1,  # DFS also edge-based
+                "cost": compute_weighted_cost(G, path),
                 "nodes_traversed": nodes_traversed,
                 "time": round((end_time - start_time) * 1000, 4)
             }
