@@ -31,32 +31,31 @@
       <data key="d4">13.3529435</data>
       <data key="d5">74.7913301</data>
       <data key="d6">3</data>
-      <data key="d7">Gate 1
-🛺</data>
+      <data key="d7">Dept of Automative Eng.</data>
     </node>
     <node id="1369615209">
       <data key="d4">13.3519887</data>
       <data key="d5">74.7934165</data>
       <data key="d6">3</data>
-      <data key="d7">Cafeteria</data>
+      <data key="d7">Library</data>
     </node>
     <node id="1828354472">
       <data key="d4">13.3430888</data>
       <data key="d5">74.7910823</data>
       <data key="d6">3</data>
-      <data key="d7">B 12</data>
+      <data key="d7">Gate 5</data>
     </node>
     <node id="1828354497">
       <data key="d4">13.3523697</data>
       <data key="d5">74.7922208</data>
       <data key="d6">3</data>
-      <data key="d7">AB4/IC</data>
+      <data key="d7">AB2</data>
     </node>
     <node id="1828686716">
       <data key="d4">13.3468068</data>
       <data key="d5">74.7919142</data>
       <data key="d6">3</data>
-      <data key="d7">Prof Quarters</data>
+      <data key="d7">SP Workshop</data>
     </node>
     <node id="1828686739">
       <data key="d4">13.3447852</data>
@@ -69,47 +68,43 @@
       <data key="d4">13.3450559</data>
       <data key="d5">74.7915031</data>
       <data key="d6">4</data>
-      <data key="d7">Gate 4
-🛺</data>
+      <data key="d7">B 1</data>
     </node>
     <node id="1828686746">
       <data key="d4">13.3452114</data>
       <data key="d5">74.7911241</data>
       <data key="d6">3</data>
-      <data key="d7">Gate 4
-🛺</data>
+      <data key="d7">Irrigation Eng. Lab</data>
     </node>
     <node id="1828686763">
       <data key="d4">13.3468664</data>
       <data key="d5">74.7924393</data>
       <data key="d6">3</data>
-      <data key="d7">Gate 2
-🛺</data>
+      <data key="d7">W2</data>
     </node>
     <node id="1828686784">
       <data key="d4">13.3468173</data>
       <data key="d5">74.7929663</data>
       <data key="d6">3</data>
-      <data key="d7">B 22</data>
+      <data key="d7">W1</data>
     </node>
     <node id="1828686788">
       <data key="d4">13.3458852</data>
       <data key="d5">74.7919352</data>
       <data key="d6">3</data>
-      <data key="d7">OJAS Block</data>
+      <data key="d7">Dept. Chemical Engineering</data>
     </node>
     <node id="1828686800">
       <data key="d4">13.3443365</data>
       <data key="d5">74.7916961</data>
       <data key="d6">3</data>
-      <data key="d7">Sitting area</data>
+      <data key="d7">B 15</data>
     </node>
     <node id="1828686802">
       <data key="d4">13.3445242</data>
       <data key="d5">74.7912915</data>
       <data key="d6">3</data>
-      <data key="d7">Gate 4
-🛺</data>
+      <data key="d7">B 22</data>
     </node>
     <node id="1828686813">
       <data key="d4">13.3467451</data>
@@ -121,37 +116,37 @@
       <data key="d4">13.3469824</data>
       <data key="d5">74.7930434</data>
       <data key="d6">3</data>
-      <data key="d7">B 22</data>
+      <data key="d7">COE Electric Vehicles</data>
     </node>
     <node id="1828686848">
       <data key="d4">13.3448677</data>
       <data key="d5">74.7919721</data>
       <data key="d6">4</data>
-      <data key="d7">Sitting area</data>
+      <data key="d7">B 13</data>
     </node>
     <node id="1828686856">
       <data key="d4">13.3460735</data>
       <data key="d5">74.7915348</data>
       <data key="d6">3</data>
-      <data key="d7">Gate 3</data>
+      <data key="d7">Vibration lab</data>
     </node>
     <node id="1828686885">
       <data key="d4">13.3459239</data>
       <data key="d5">74.7931406</data>
       <data key="d6">3</data>
-      <data key="d7">B 21</data>
+      <data key="d7">Power and energy system</data>
     </node>
     <node id="1828686888">
       <data key="d4">13.3460222</data>
       <data key="d5">74.7936384</data>
       <data key="d6">4</data>
-      <data key="d7">B 7</data>
+      <data key="d7">COE Industrial Robotics</data>
     </node>
     <node id="1828686896">
       <data key="d4">13.3447382</data>
       <data key="d5">74.7934131</data>
       <data key="d6">4</data>
-      <data key="d7">B 21</data>
+      <data key="d7">B 5</data>
     </node>
     <node id="1828703030">
       <data key="d4">13.3426846</data>
@@ -169,79 +164,79 @@
       <data key="d4">13.3421664</data>
       <data key="d5">74.7915011</data>
       <data key="d6">3</data>
-      <data key="d7">Manipal Centre for Biotheraupatics and Research</data>
+      <data key="d7">B 12</data>
     </node>
     <node id="1828703121">
       <data key="d4">13.3440736</data>
       <data key="d5">74.7915659</data>
       <data key="d6">3</data>
-      <data key="d7">Sitting area</data>
+      <data key="d7">B 21</data>
     </node>
     <node id="1828703125">
       <data key="d4">13.3445253</data>
       <data key="d5">74.7917934</data>
       <data key="d6">3</data>
-      <data key="d7">Sitting area</data>
+      <data key="d7">B 14</data>
     </node>
     <node id="1828703164">
       <data key="d4">13.3436334</data>
       <data key="d5">74.792441</data>
       <data key="d6">3</data>
-      <data key="d7">B 11</data>
+      <data key="d7">B 9</data>
     </node>
     <node id="1969485195">
       <data key="d4">13.3457167</data>
       <data key="d5">74.7970395</data>
       <data key="d6">4</data>
-      <data key="d7">B 20</data>
+      <data key="d7">Polytechnic II</data>
     </node>
     <node id="1969485223">
       <data key="d4">13.3457374</data>
       <data key="d5">74.7951431</data>
       <data key="d6">3</data>
-      <data key="d7">B 14</data>
+      <data key="d7">-CB design and prototyping</data>
     </node>
     <node id="1969485235">
       <data key="d4">13.3455555</data>
       <data key="d5">74.793763</data>
       <data key="d6">3</data>
-      <data key="d7">B 7</data>
+      <data key="d7">Heat Transfer Lab</data>
     </node>
     <node id="1969485243">
       <data key="d4">13.3448397</data>
       <data key="d5">74.7939119</data>
       <data key="d6">3</data>
-      <data key="d7">B 9</data>
+      <data key="d7">B 2</data>
     </node>
     <node id="1969485294">
       <data key="d4">13.3446597</data>
       <data key="d5">74.7956969</data>
       <data key="d6">1</data>
-      <data key="d7">B 9</data>
+      <data key="d7">B 17</data>
     </node>
     <node id="1969485298">
       <data key="d4">13.3446441</data>
       <data key="d5">74.796405</data>
       <data key="d6">3</data>
-      <data key="d7">B 17</data>
+      <data key="d7">B 18</data>
     </node>
     <node id="1969485377">
       <data key="d4">13.3466301</data>
       <data key="d5">74.7962924</data>
       <data key="d6">3</data>
-      <data key="d7">B 16</data>
+      <data key="d7">MAHE ISAC</data>
     </node>
     <node id="1969485529">
       <data key="d4">13.3457505</data>
       <data key="d5">74.7949902</data>
       <data key="d6">3</data>
-      <data key="d7">B 14</data>
+      <data key="d7">COE Drone Tech.</data>
     </node>
     <node id="1969502318">
       <data key="d4">13.3500642</data>
       <data key="d5">74.7926802</data>
       <data key="d6">3</data>
-      <data key="d7">B 1</data>
+      <data key="d7">Workshop4</data>
     </node>
     <node id="1969502336">
       <data key="d4">13.3416948</data>
@@ -253,7 +248,7 @@
       <data key="d4">13.3449316</data>
       <data key="d5">74.7943174</data>
       <data key="d6">3</data>
-      <data key="d7">B 9</data>
+      <data key="d7">B 3</data>
     </node>
     <node id="1969502362">
       <data key="d4">13.3427857</data>
@@ -265,92 +260,91 @@
       <data key="d4">13.3529469</data>
       <data key="d5">74.7919837</data>
       <data key="d6">3</data>
-      <data key="d7">Gate 1
-🛺</data>
+      <data key="d7">AB1</data>
     </node>
     <node id="2444991430">
       <data key="d4">13.346411</data>
       <data key="d5">74.7973038</data>
       <data key="d6">3</data>
-      <data key="d7">B 19</data>
+      <data key="d7">Machine testing lab</data>
     </node>
     <node id="2444991433">
       <data key="d4">13.3461317</data>
       <data key="d5">74.7942947</data>
       <data key="d6">3</data>
-      <data key="d7">Apoorva</data>
+      <data key="d7">Machine Labs</data>
     </node>
     <node id="2444991493">
       <data key="d4">13.3470191</data>
       <data key="d5">74.7945334</data>
       <data key="d6">3</data>
-      <data key="d7">Sindhi</data>
+      <data key="d7">Automotive Service centre</data>
     </node>
     <node id="2444991500">
       <data key="d4">13.344939</data>
       <data key="d5">74.7943502</data>
       <data key="d6">3</data>
-      <data key="d7">B 9</data>
+      <data key="d7">B 4</data>
     </node>
     <node id="2444991530">
       <data key="d4">13.347349</data>
       <data key="d5">74.7943871</data>
       <data key="d6">3</data>
-      <data key="d7">Sindhi</data>
+      <data key="d7">Staff Rooms 1/2</data>
     </node>
     <node id="2444991536">
       <data key="d4">13.3458042</data>
       <data key="d5">74.7954687</data>
       <data key="d6">3</data>
-      <data key="d7">B 15</data>
+      <data key="d7">Industrial Automation</data>
     </node>
     <node id="2444991540">
       <data key="d4">13.3446859</data>
       <data key="d5">74.795947</data>
       <data key="d6">1</data>
-      <data key="d7">B 17</data>
+      <data key="d7">B 16</data>
     </node>
     <node id="2444991549">
       <data key="d4">13.347421</data>
       <data key="d5">74.7971375</data>
       <data key="d6">3</data>
-      <data key="d7">B 18</data>
+      <data key="d7">W3</data>
     </node>
     <node id="2444991556">
       <data key="d4">13.3457184</data>
       <data key="d5">74.7945524</data>
       <data key="d6">3</data>
-      <data key="d7">Apoorva</data>
+      <data key="d7">Robotics and 3D printing</data>
     </node>
     <node id="2444991573">
       <data key="d4">13.3480238</data>
       <data key="d5">74.7969953</data>
       <data key="d6">3</data>
-      <data key="d7">Temple Run</data>
+      <data key="d7">Automotive Lab</data>
     </node>
     <node id="2444991575">
       <data key="d4">13.3459047</data>
       <data key="d5">74.7946568</data>
       <data key="d6">1</data>
-      <data key="d7">Apoorva</data>
+      <data key="d7">COE in CNC Machines</data>
     </node>
     <node id="2444991595">
       <data key="d4">13.345983</data>
       <data key="d5">74.7949063</data>
       <data key="d6">1</data>
-      <data key="d7">B 8</data>
+      <data key="d7">Digital Printing</data>
     </node>
     <node id="2444991599">
       <data key="d4">13.3450216</data>
       <data key="d5">74.7947146</data>
       <data key="d6">3</data>
-      <data key="d7">B 9</data>
+      <data key="d7">B 6</data>
     </node>
     <node id="2444991609">
       <data key="d4">13.3456434</data>
       <data key="d5">74.794189</data>
       <data key="d6">3</data>
-      <data key="d7">B 7</data>
+      <data key="d7">AirConditioning and Refrigeration</data>
     </node>
     <node id="2444991613">
       <data key="d4">13.3472331</data>
@@ -362,19 +356,19 @@
       <data key="d4">13.3446563</data>
       <data key="d5">74.7969627</data>
       <data key="d6">3</data>
-      <data key="d7">B 17</data>
+      <data key="d7">B 19</data>
     </node>
     <node id="2940440793">
       <data key="d4">13.3464861</data>
       <data key="d5">74.7965077</data>
       <data key="d6">3</data>
-      <data key="d7">B 19</data>
+      <data key="d7">Wood working Workshop</data>
     </node>
     <node id="2940440794">
       <data key="d4">13.3458616</data>
       <data key="d5">74.7973372</data>
       <data key="d6">3</data>
-      <data key="d7">B 20</data>
+      <data key="d7">Polytechnic I</data>
     </node>
     <node id="2941383555">
       <data key="d4">13.3509407</data>
@@ -386,62 +380,61 @@
       <data key="d4">13.3468146</data>
       <data key="d5">74.796713</data>
       <data key="d6">3</data>
-      <data key="d7">B 19</data>
+      <data key="d7">C Wing Classrooms</data>
     </node>
     <node id="2941568436">
       <data key="d4">13.345624</data>
       <data key="d5">74.7967096</data>
       <data key="d6">3</data>
-      <data key="d7">B 20</data>
+      <data key="d7">Gate 8</data>
     </node>
     <node id="3662071938">
       <data key="d4">13.3456643</data>
       <data key="d5">74.7923813</data>
       <data key="d6">4</data>
-      <data key="d7">OJAS Block</data>
+      <data key="d7">Renewable energy lab</data>
     </node>
     <node id="5776382945">
       <data key="d4">13.3533695</data>
       <data key="d5">74.7943358</data>
       <data key="d6">3</data>
-      <data key="d7">B 23</data>
+      <data key="d7">KEF R&amp;D Centre</data>
     </node>
     <node id="5776382949">
       <data key="d4">13.3543765</data>
       <data key="d5">74.7941666</data>
       <data key="d6">3</data>
-      <data key="d7">GATE 8</data>
+      <data key="d7">AB5</data>
     </node>
     <node id="5804706291">
       <data key="d4">13.3471924</data>
       <data key="d5">74.796918</data>
       <data key="d6">3</data>
-      <data key="d7">B 18</data>
+      <data key="d7">HOD Mech Workshop</data>
     </node>
     <node id="5804706292">
       <data key="d4">13.3469629</data>
       <data key="d5">74.7971993</data>
       <data key="d6">3</data>
-      <data key="d7">B 19</data>
+      <data key="d7">JANYU[COE and Robotics]</data>
     </node>
     <node id="6641211402">
       <data key="d4">13.3473587</data>
       <data key="d5">74.7929977</data>
       <data key="d6">3</data>
-      <data key="d7">Gate 2
-🛺</data>
+      <data key="d7">1st Yr Workshop</data>
     </node>
     <node id="6641211403">
       <data key="d4">13.3476442</data>
       <data key="d5">74.7932971</data>
       <data key="d6">3</data>
-      <data key="d7">Rowing Simulator NCC</data>
+      <data key="d7">Workshop 2</data>
     </node>
     <node id="6641211404">
       <data key="d4">13.347095</data>
       <data key="d5">74.7931016</data>
       <data key="d6">3</data>
-      <data key="d7">B 22</data>
+      <data key="d7">Rowing Simulator NCC</data>
     </node>
     <node id="7488743845">
       <data key="d4">13.3474006</data>
@@ -453,43 +446,43 @@
       <data key="d4">13.3439438</data>
       <data key="d5">74.7956376</data>
       <data key="d6">3</data>
-      <data key="d7">DOC</data>
+      <data key="d7">B 8</data>
     </node>
     <node id="7488743851">
       <data key="d4">13.34445</data>
       <data key="d5">74.7968718</data>
       <data key="d6">3</data>
-      <data key="d7">B 17</data>
+      <data key="d7">B 20</data>
     </node>
     <node id="7536003022">
       <data key="d4">13.3409009</data>
       <data key="d5">74.7942821</data>
       <data key="d6">3</data>
-      <data key="d7">Department of Design</data>
+      <data key="d7">Prof Quarters</data>
     </node>
     <node id="7536003028">
       <data key="d4">13.3411659</data>
       <data key="d5">74.7935842</data>
       <data key="d6">3</data>
-      <data key="d7">B 10</data>
+      <data key="d7">B 23</data>
     </node>
     <node id="7585684171">
       <data key="d4">13.3398812</data>
       <data key="d5">74.7935137</data>
       <data key="d6">1</data>
-      <data key="d7">Department of Design</data>
+      <data key="d7">Sitting area</data>
     </node>
     <node id="7632506985">
       <data key="d4">13.3488004</data>
       <data key="d5">74.7936664</data>
       <data key="d6">1</data>
-      <data key="d7">Ashraya</data>
+      <data key="d7">Workshop 3</data>
     </node>
     <node id="7632506986">
       <data key="d4">13.3486688</data>
       <data key="d5">74.7930707</data>
       <data key="d6">3</data>
-      <data key="d7">B 3</data>
+      <data key="d7">Workshop 1</data>
     </node>
     <node id="9573044981">
       <data key="d4">13.3528154</data>
@@ -502,32 +495,31 @@
       <data key="d4">13.3529283</data>
       <data key="d5">74.7915719</data>
       <data key="d6">3</data>
-      <data key="d7">Gate 1
-🛺</data>
+      <data key="d7">GATE 8</data>
     </node>
     <node id="9573044985">
       <data key="d4">13.3472946</data>
       <data key="d5">74.7944112</data>
       <data key="d6">3</data>
-      <data key="d7">Sindhi</data>
+      <data key="d7">Manipal driving school</data>
     </node>
     <node id="9573044992">
       <data key="d4">13.3467326</data>
       <data key="d5">74.796295</data>
       <data key="d6">3</data>
-      <data key="d7">B 18</data>
+      <data key="d7">Blackfrog Manufacturing Plant</data>
     </node>
     <node id="9573044997">
       <data key="d4">13.3516793</data>
       <data key="d5">74.7926353</data>
       <data key="d6">3</data>
-      <data key="d7">AB4/IC</data>
+      <data key="d7">AB3</data>
     </node>
     <node id="11254431786">
       <data key="d4">13.3455864</data>
       <data key="d5">74.7932278</data>
       <data key="d6">3</data>
-      <data key="d7">B 21</data>
+      <data key="d7">Design Eng. Lab</data>
     </node>
     <node id="11254431787">
       <data key="d4">13.3517612</data>
@@ -539,19 +531,19 @@
       <data key="d4">13.3443684</data>
       <data key="d5">74.7934954</data>
       <data key="d6">1</data>
-      <data key="d7">Sitting area</data>
+      <data key="d7">B 7</data>
     </node>
     <node id="11878206581">
       <data key="d4">13.3471454</data>
       <data key="d5">74.7935874</data>
       <data key="d6">3</data>
-      <data key="d7">B 5</data>
+      <data key="d7">2-wheeler repair bay</data>
     </node>
     <node id="11878206714">
       <data key="d4">13.3470284</data>
       <data key="d5">74.7934261</data>
       <data key="d6">3</data>
-      <data key="d7">B 5</data>
+      <data key="d7">Dept. of PE</data>
     </node>
     <node id="11880295042">
       <data key="d4">13.3408168</data>
@@ -563,7 +555,7 @@
       <data key="d4">13.3410944</data>
       <data key="d5">74.7935478</data>
       <data key="d6">4</data>
-      <data key="d7">B 10</data>
+      <data key="d7">Manipal Central Research and Instrumentation</data>
     </node>
     <edge source="1369614871" target="6641211402" id="0">
       <data key="d8">171867136</data>

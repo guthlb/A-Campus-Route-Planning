@@ -14,7 +14,8 @@ graph_path = os.path.join(base_dir, "data", "mit_clean.graphml")
 geojson_files = [
     "Academic_Blocks.geojson",
     "Hostels.geojson",
-    "Mess.geojson"]
+    "Mess.geojson"
+]
 
 # =========================
 # LOAD GRAPH
@@ -28,7 +29,6 @@ print(f"Graph loaded: {len(G.nodes())} nodes")
 transformer = Transformer.from_crs("EPSG:3857", "EPSG:4326", always_xy=True)
 
 def convert_if_needed(lon, lat):
-    # If values are too large → EPSG:3857
     if abs(lon) > 180 or abs(lat) > 90:
         lon, lat = transformer.transform(lon, lat)
     return lat, lon
@@ -45,15 +45,13 @@ def extract_places(file_path):
     for feature in data["features"]:
         props = feature.get("properties", {})
 
-        # Handle different naming keys
         name = (
             props.get("Name") or
             props.get("Name/Num") or
-            props.get("Shops") or
-            "Unknown"
+            props.get("Shops")
         )
 
-        if not name or name == "Unknown":
+        if not name:
             continue
 
         geom = feature.get("geometry", {})
@@ -98,42 +96,48 @@ for file in geojson_files:
 print(f"Total places: {len(all_places)}")
 
 # =========================
-# FIND NEAREST PLACE
+# RESET LABELS
 # =========================
-def nearest_place(lat, lon):
-    best_name = None
+for node in G.nodes():
+    G.nodes[node]["label"] = "Unknown"
+
+# =========================
+# ASSIGN ONE NODE PER PLACE
+# =========================
+print("Assigning ONE node per place...")
+
+assigned_nodes = set()
+
+for name, plat, plon in all_places:
+
+    best_node = None
     min_dist = float("inf")
 
-    for name, plat, plon in all_places:
+    for node, data in G.nodes(data=True):
+
+        if node in assigned_nodes:
+            continue
+
+        try:
+            lat = float(data["y"])
+            lon = float(data["x"])
+        except:
+            continue
+
         d = geodesic((lat, lon), (plat, plon)).meters
 
         if d < min_dist:
             min_dist = d
-            best_name = name
+            best_node = node
 
-    return best_name
+    if best_node is not None:
+        G.nodes[best_node]["label"] = name
+        assigned_nodes.add(best_node)
 
-# =========================
-# RENAME NODES
-# =========================
-print("Renaming nodes...")
-
-for node, data in G.nodes(data=True):
-    try:
-        lat = float(data["y"])
-        lon = float(data["x"])
-
-        place_name = nearest_place(lat, lon)
-
-        data["label"] = place_name
-
-    except Exception:
-        data["label"] = "Unknown"
-
-print("Renaming complete!")
+print("Assignment complete!")
 
 # =========================
-# SAVE UPDATED GRAPH
+# SAVE GRAPH
 # =========================
 output_path = os.path.join(base_dir, "data", "mit_labeled.graphml")
 nx.write_graphml(G, output_path)

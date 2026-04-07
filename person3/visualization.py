@@ -1,12 +1,14 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+import matplotlib
 import matplotlib.lines as mlines
 import math
 from matplotlib.animation import FuncAnimation
 
+matplotlib.use('TkAgg') #this line is needed ONLY ON LINUX (remove for windows)
+
 
 # WINDOW 1: MOUSE INTERACTION
-
 
 def interactive_route_selection(G, pos):
 
@@ -43,6 +45,15 @@ def interactive_route_selection(G, pos):
             width=0.6,
             ax=ax
         )
+
+        nx.draw_networkx_labels(
+            G,
+            pos,
+            labels=labels,
+            font_size=5,
+            font_color="black",
+            alpha=0.6,
+            ax=ax)
 
         if state["start"]:
             nx.draw_networkx_nodes(
@@ -108,6 +119,16 @@ def animate_path(G, pos, path):
         ax=ax
     )
 
+    nx.draw_networkx_labels(
+    G,
+    pos,
+    labels=labels,
+    font_size=6,
+    font_color="black",
+    alpha=0.6,
+    ax=ax
+    )
+
     ax.set_title("A* Route Navigation")
     ax.axis("off")
 
@@ -161,7 +182,15 @@ def visualize_comparison(G, pos,start,goal,astar_path,bfs_path,dfs_path):
                            nodelist=[start,goal], 
                            node_color=['green','red'], 
                            node_size=150, 
-                           ax=ax)   
+                           ax=ax)  
+        nx.draw_networkx_labels(
+                            G,
+                            pos,
+                            labels=labels,
+                            font_size=5,
+                            font_color="black",
+                            alpha=0.6,
+                            ax=ax) 
         
         ax.set_title(title)
         ax.axis('off') 
@@ -185,13 +214,20 @@ def visualize_comparison(G, pos,start,goal,astar_path,bfs_path,dfs_path):
 
 if __name__ == "__main__":
 
-    G = nx.read_graphml("person1/mit_clean.graphml")
+    G = nx.read_graphml("../person1/mit_clean.graphml")
 
     pos = {
         n: (float(G.nodes[n]['x']),
             float(G.nodes[n]['y']))
         for n in G.nodes
     }
+
+    labels = {
+    node: data.get("label")
+    for node, data in G.nodes(data=True)
+    if data.get("label") not in [None, "Unknown"]
+    }
+
 
     #------------------------------------WINDOW 1: USER INTERACTION------------------------------------
     start, goal = interactive_route_selection(G, pos)
