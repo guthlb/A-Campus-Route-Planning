@@ -4,8 +4,13 @@ import matplotlib
 import matplotlib.lines as mlines
 import math
 from matplotlib.animation import FuncAnimation
+import sys
+import os
 
-matplotlib.use('TkAgg') #this line is needed ONLY ON LINUX (remove for windows)
+matplotlib.use('TkAgg') # remove on Windows
+
+sys.path.append(os.path.abspath("../person2"))
+from two import run_astar, run_bfs, run_dfs
 
 
 # WINDOW 1: MOUSE INTERACTION
@@ -91,12 +96,11 @@ def interactive_route_selection(G, pos):
             state["goal"] = node
             state["done"] = True
 
-
         redraw()
 
     fig.canvas.mpl_connect("button_press_event", on_click)
     
-    redraw()   #draw graph before waiting for clicks
+    redraw()
     while not state["done"]:
         plt.pause(0.1)
 
@@ -104,7 +108,7 @@ def interactive_route_selection(G, pos):
     return state["start"], state["goal"]
 
     
- # WINDOW 2: A* ANIMATION   
+# WINDOW 2: A* ANIMATION   
 
 def animate_path(G, pos, path):
 
@@ -120,13 +124,13 @@ def animate_path(G, pos, path):
     )
 
     nx.draw_networkx_labels(
-    G,
-    pos,
-    labels=labels,
-    font_size=6,
-    font_color="black",
-    alpha=0.6,
-    ax=ax
+        G,
+        pos,
+        labels=labels,
+        font_size=6,
+        font_color="black",
+        alpha=0.6,
+        ax=ax
     )
 
     ax.set_title("A* Route Navigation")
@@ -151,6 +155,7 @@ def animate_path(G, pos, path):
 
     plt.show()
 
+
 # WINDOW 3: FULL GRAPH + PATH COMPARISON
 
 def visualize_comparison(G, pos,start,goal,astar_path,bfs_path,dfs_path):
@@ -163,34 +168,40 @@ def visualize_comparison(G, pos,start,goal,astar_path,bfs_path,dfs_path):
             pos,
             node_size=3,
             edge_color="#bbbbbb",
-            width =0.7,
+            width=0.7,
             alpha=1,
             ax=ax
         )
 
         edges=list(zip(path, path[1:])) 
-        nx.draw_networkx_edges(G.to_undirected(), 
-                               pos,
-                            edgelist=edges,
-                            edge_color=color,
-                            width=4,
-                            alpha=0.7,
-                            ax=ax)
+        nx.draw_networkx_edges(
+            G.to_undirected(), 
+            pos,
+            edgelist=edges,
+            edge_color=color,
+            width=4,
+            alpha=0.7,
+            ax=ax
+        )
 
-        nx.draw_networkx_nodes(G, 
-                           pos, 
-                           nodelist=[start,goal], 
-                           node_color=['green','red'], 
-                           node_size=150, 
-                           ax=ax)  
+        nx.draw_networkx_nodes(
+            G, 
+            pos, 
+            nodelist=[start,goal], 
+            node_color=['green','red'], 
+            node_size=150, 
+            ax=ax
+        )  
+
         nx.draw_networkx_labels(
-                            G,
-                            pos,
-                            labels=labels,
-                            font_size=5,
-                            font_color="black",
-                            alpha=0.6,
-                            ax=ax) 
+            G,
+            pos,
+            labels=labels,
+            font_size=5,
+            font_color="black",
+            alpha=0.6,
+            ax=ax
+        ) 
         
         ax.set_title(title)
         ax.axis('off') 
@@ -198,48 +209,51 @@ def visualize_comparison(G, pos,start,goal,astar_path,bfs_path,dfs_path):
     draw(axes[0], astar_path, "A* Path", 'blue')
     draw(axes[1], bfs_path, "BFS Path", 'green')
     draw(axes[2], dfs_path, "DFS Path", 'orange')
-    legend_handles = [mlines.Line2D([], [], color='blue', linewidth=4, label='A* Path'),
-                      mlines.Line2D([], [], color='green', linewidth=4, label='BFS Path'),
-                      mlines.Line2D([], [], color='orange', linewidth=4, label='DFS Path')]
-    
 
-    fig.legend(handles=legend_handles, loc='upper center',bbox_to_anchor=(0.5, 1.0), ncol=3,fontsize=11)
-    
+    legend_handles = [
+        mlines.Line2D([], [], color='blue', linewidth=4, label='A* Path'),
+        mlines.Line2D([], [], color='green', linewidth=4, label='BFS Path'),
+        mlines.Line2D([], [], color='orange', linewidth=4, label='DFS Path')
+    ]
+
+    fig.legend(handles=legend_handles, loc='upper center',
+               bbox_to_anchor=(0.5, 1.0), ncol=3, fontsize=11)
+
     plt.tight_layout(rect=[0, 0, 1, 0.95])
-    plt.savefig("algorithm_comparison.png", dpi=300,bbox_inches="tight")
+    plt.savefig("algorithm_comparison.png", dpi=300, bbox_inches="tight")
     plt.show()
 
 
-# TESTING
+# ---------------- MAIN ----------------
 
 if __name__ == "__main__":
 
     G = nx.read_graphml("../person1/mit_clean.graphml")
 
     pos = {
-        n: (float(G.nodes[n]['x']),
-            float(G.nodes[n]['y']))
+        n: (float(G.nodes[n]['x']), float(G.nodes[n]['y']))
         for n in G.nodes
     }
 
+    # ensure weights exist
+    for u, v, d in G.edges(data=True):
+        d["length"] = float(d.get("length", 1.0))
+
     labels = {
-    node: data.get("label")
-    for node, data in G.nodes(data=True)
-    if data.get("label") not in [None, "Unknown"]
+        node: data.get("label")
+        for node, data in G.nodes(data=True)
+        if data.get("label") not in [None, "Unknown"]
     }
 
-
-    #------------------------------------WINDOW 1: USER INTERACTION------------------------------------
+    # WINDOW 1
     start, goal = interactive_route_selection(G, pos)
 
-    #------------------------------------RUN ALGORITHMS------------------------------------
-    astar_path = nx.shortest_path(G, start, goal)                           # to be changed to actual A* path later
-    bfs_path = astar_path[::-1]                                            # to be changed to actual BFS path later
-    dfs_path = astar_path[:]                                                # to be changed to actual DFS path later
+    astar_path = run_astar(G, start, goal, pos)
+    bfs_path = run_bfs(G, start, goal)
+    dfs_path = run_dfs(G, start, goal)
 
+    # WINDOW 2
+    animate_path(G, pos, astar_path)
 
-    #------------------------------------WINDOW 2: A* ANIMATION------------------------------------
-    animate_path(G, pos, astar_path)    
-
-    #------------------------------------WINDOW 3: FULL GRAPH + PATH COMPARISON------------------------------------
+    # WINDOW 3
     visualize_comparison(G, pos, start, goal, astar_path, bfs_path, dfs_path)
